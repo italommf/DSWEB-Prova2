@@ -1,0 +1,31 @@
+O mecanismo de templates utilizado pelo framework Django é habilitado a gerar 
+diversos tipos de conteúdo, desde que no formato texto (0,5). Nesse contexto, podemos 
+gerar um resultado contendo texto simples
+
+{% for obj in lista %}
+    Conteúdo da linha {{ forloop.counter }} = {{ obj.variavel }}
+{% endfor %}
+
+
+
+
+Também pode ser utilizado para gerar resultado contento XML
+
+<lista> 
+    {% for obj in lista %}
+        <obj>Conteúdo da linha {{ forloop.counter }} = <valor>{{ obj.variavel }}</valor></obj>
+    {% endfor %} 
+</lista>
+
+
+
+
+
+Também pode ser utilizado para gerar resultado contendo JSON
+
+“lista”: [ {% for obj in lista %}
+{
+“valor1”: “Conteúdo da linha {{ forloop.counter }}”,
+“valor2”: “{{ obj.variavel }}”
+},
+{% endfor %} ]

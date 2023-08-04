@@ -1,0 +1,18 @@
+{% extends "prova/base.html" %}
+
+
+{% block principal %}
+    <h2>Nome do Aluno: {{ aluno.nome }}</h2>
+    <h1>Status do aluno... </h1>
+    {% if rendimento.aprovado %}
+        <p>Parabens pela APROVAÇÃO!!!!</p>
+        <p>Disciplina: {{ rendimento.diario.disciplina.nome }}</p>
+        <p>Carga horária de {{ rendimento.diario.disciplina.nome }}: {{ rendimento.diario.disciplina.carga_horaria }}</p>
+        <p>Sua porcentagem de faltas é de: {{ rendimento.percet_faltas }}</p>
+        <p>Sua PRIMEIRA nota foi: {{ rendimento.nota1 }}
+        <p>Sua SEGUNDA nota foi: {{ rendimento.nota2 }}</p>
+        <p>Sua média foi: {{ rendimento.media }}</p>
+    {% else %}
+        <p>Infelizmente voce foi REPROVADO! Se dedique mais, eu confio em você! ; </p>
+    {% endif %}
+{% endblock %}

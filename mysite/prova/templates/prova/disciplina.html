@@ -1,0 +1,33 @@
+{% extends "prova/base.html" %}
+
+{% block principal %}
+    <p>Nome da Disciplina: {{ diario.disciplina.nome }}</p>
+    <p>Carga horária de {{ diario.disciplina.nome }}: {{ diario.disciplina.carga_horaria }}</p>
+
+    {% for diario_obj in diario %}
+        <p>Codigo do Diário: {{ diario_obj.codigo }}</p>                
+        <p>Ano: {{ diario_obj.ano }}</p>        
+        <p>Semestre: {{ diario_obj.semestre }}</p>
+        <p>Percentual de Conclusão: {{ diario_obj.percent_conclusao }}%</p>
+
+        {% for rendimento in diario_obj.diario_rendimentos.all %}
+            <p>Nome do Aluno: {{ rendimento.aluno.nome }}</p>
+            <p>Matrícula do Aluno: {{ rendimento.aluno.matricula }}</p>
+            <p>Média: {{ rendimento.media }}</p>
+            <p>Número de Faltas: {{ rendimento.num_faltas }}</p>
+
+            {% if rendimento.aprovado %}
+                <p>Situação: Aprovado</p>
+            {% elif rendimento.final %}
+                <p>Situação: Em Prova Final</p>
+            {% else %}
+                <p>Situação: Reprovado</p>
+            {% endif %}
+            <hr>
+        {% endfor %}
+
+    {% endfor %}
+      
+    <p>Numero de aulas: {{ diario.num_aulas }}</p>
+
+{% endblock %}
